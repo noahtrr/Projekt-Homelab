@@ -65,3 +65,5 @@ docker run --health-cmd "pg_isready -q -t 2 -d $$POSTGRES_DB -U $$POSTGRES_USER"
 docker run --health-cmd "[ $$(valkey-cli --pass \"$${REDIS_PASSWORD}" ping) = 'PONG' ]" --health-interval 1s --health-retries 5 --health-start-period 5s --health-timeout 3s --env-file env/redis.env -v netbox-redis-data:/data docker.io/valkey/valkey:8.0-alpine sh,-c,valkey-server --appendonly yes --requirepass $$REDIS_PASSWORD
 docker run --health-cmd "[ $$(valkey-cli --pass \"$${REDIS_PASSWORD}" ping) = 'PONG' ]" --health-interval 1s --health-retries 5 --health-start-period 5s --health-timeout 3s --env-file env/redis-cache.env -v netbox-redis-cache-data:/data docker.io/valkey/valkey:8.0-alpine sh,-c,valkey-server --requirepass $$REDIS_PASSWORD
   
+# Prometheus
+docker run -d -p 9090:9090 --name=prometheus prom/prometheus
