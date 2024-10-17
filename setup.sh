@@ -79,3 +79,20 @@ docker compose up -d
 echo "Return to previous directory."
 
 cd ..
+
+echo "Creating Grafana docker container."
+
+docker run -d -p 3000:3000 --name=grafana \
+  --volume grafana-storage:/var/lib/grafana \
+  --restart unless-stopped \
+  grafana/grafana-enterprise
+
+echo "Creating InfluxDB container."
+
+cd Docker-Containers/influxdb
+
+docker compose up -d
+
+echo "Return to previous directory."
+
+cd ..

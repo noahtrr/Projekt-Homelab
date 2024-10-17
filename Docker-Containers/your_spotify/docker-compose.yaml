@@ -18,6 +18,7 @@ services:
     image: mongo:4.4
     volumes:
       - /opt/Docker/your_spotify_db:/data/db
+    restart: unless-stopped
 
   web:
     image: yooooomi/your_spotify_client
