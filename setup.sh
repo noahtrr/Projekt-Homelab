@@ -72,7 +72,7 @@ echo "Create your_spotify container. "
 
 git clone -b main https://github.com/noahtrr/Projekt-Homelab.git
 
-cd Docker-Containers/your_spotify
+cd Projekt-Homelab/Docker-Containers/your_spotify
 
 docker compose up -d
 
@@ -89,7 +89,7 @@ docker run -d -p 3000:3000 --name=grafana \
 
 echo "Creating InfluxDB container."
 
-cd Docker-Containers/influxdb
+cd Projekt-Homelab/Docker-Containers/influxdb
 
 docker compose up -d
 
