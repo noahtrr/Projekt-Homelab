@@ -3,7 +3,7 @@ services:
     image: influxdb:latest
     volumes:
       # Mount for influxdb data directory and configuration
-      - /portainer/Files/AppData/Config/influxdb2:/var/lib/influxdb2:rw
+      - /opt/Docker/influxdb2:/var/lib/influxdb2:rw
     ports:
       - "8086:8086"
     restart: unless-stopped
@@ -14,9 +14,9 @@ services:
     image: influxdb:latest
     volumes:
       # Mount for influxdb data directory and configuration
-      - /portainer/Files/AppData/Config/influxdb2:/var/lib/influxdb2:rw
-      - /portainer/Files/AppData/Config/influxdb2/ssl/influxdb-selfsigned.crt:/etc/ssl/influxdb-selfsigned.crt:rw
-      - /portainer/Files/AppData/Config/influxdb2/ssl/influxdb-selfsigned.key:/etc/ssl/influxdb-selfsigned.key:rw
+      - /opt/Docker/influxdb2:/var/lib/influxdb2:rw
+      - /opt/Docker/influxdb2/ssl/influxdb-selfsigned.crt:/etc/ssl/influxdb-selfsigned.crt:rw
+      - /opt/Docker/influxdb2/ssl/influxdb-selfsigned.key:/etc/ssl/influxdb-selfsigned.key:rw
     environment: 
       - DOCKER_INFLUXDB_INIT_MODE=setup
       - DOCKER_INFLUXDB_INIT_USERNAME=myusername
