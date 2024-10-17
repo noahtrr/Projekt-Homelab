@@ -76,7 +76,17 @@ cd Projekt-Homelab/Docker-Containers/your_spotify
 
 docker compose up -d
 
-echo "Return to previous directory."
+echo "Return to docker container path.."
+
+cd ..
+
+echo "Creating InfluxDB container."
+
+cd influxdb
+
+docker compose up -d
+
+echo "Return to home directory."
 
 cd ..
 cd ..
@@ -87,14 +97,3 @@ docker run -d -p 3000:3000 --name=grafana \
   --volume grafana-storage:/var/lib/grafana \
   --restart unless-stopped \
   grafana/grafana-enterprise
-
-echo "Creating InfluxDB container."
-
-cd Projekt-Homelab/Docker-Containers/influxdb
-
-docker compose up -d
-
-echo "Return to previous directory."
-
-cd ..
-cd ..
