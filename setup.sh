@@ -79,6 +79,7 @@ docker compose up -d
 echo "Return to previous directory."
 
 cd ..
+cd ..
 
 echo "Creating Grafana docker container."
 
@@ -95,4 +96,5 @@ docker compose up -d
 
 echo "Return to previous directory."
 
+cd ..
 cd ..
