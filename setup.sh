@@ -67,3 +67,7 @@ docker compose up -d
 echo "Return to previous directory."
 
 cd ..
+
+git clone -b release https://github.com/noahtrr/Projekt-Homelab.git
+
+cd 

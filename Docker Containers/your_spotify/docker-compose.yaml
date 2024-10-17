@@ -1,0 +1,28 @@
+services:
+  server:
+    image: yooooomi/your_spotify_server
+    restart: always
+    ports:
+      - "8080:8080"
+    links:
+      - mongo
+    depends_on:
+      - mongo
+    environment:
+      API_ENDPOINT: http://raspi4b:8080 # This MUST be included as a valid URL in the spotify dashboard (see below)
+      CLIENT_ENDPOINT: http://raspi4b:3010
+      SPOTIFY_PUBLIC: 
+      SPOTIFY_SECRET: 
+  mongo:
+    container_name: mongo
+    image: mongo:4.4
+    volumes:
+      - /opt/Docker/your_spotify_db:/data/db
+
+  web:
+    image: yooooomi/your_spotify_client
+    restart: always
+    ports:
+      - "3010:3000"
+    environment:
+      API_ENDPOINT: http://raspi4b:8080
