@@ -70,7 +70,7 @@ cd ..
 
 echo "Create your_spotify container. "
 
-git clone -b release https://github.com/noahtrr/Projekt-Homelab.git
+git clone -b main https://github.com/noahtrr/Projekt-Homelab.git
 
 cd Docker-Containers/your_spotify
 
