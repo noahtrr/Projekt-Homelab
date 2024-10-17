@@ -75,3 +75,7 @@ git clone -b release https://github.com/noahtrr/Projekt-Homelab.git
 cd Docker-Containers/your_spotify
 
 docker compose up -d
+
+echo "Return to previous directory."
+
+cd ..
