@@ -68,6 +68,10 @@ echo "Return to previous directory."
 
 cd ..
 
+echo "Create your_spotify container. "
+
 git clone -b release https://github.com/noahtrr/Projekt-Homelab.git
 
-cd 
+cd Docker-Containers/your_spotify
+
+docker compose up -d
