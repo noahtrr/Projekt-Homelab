@@ -55,12 +55,6 @@ echo "Creating docker container for NetBox"
 
 git clone -b release https://github.com/noahtrr/netbox-docker.git #Customized for restart policies, nothing else.
 cd netbox-docker
-tee docker-compose.override.yml <<EOF
-services:
-  netbox:
-    ports:
-      - 8000:8080
-EOF
 docker compose pull
 docker compose up -d
 
