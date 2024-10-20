@@ -1,0 +1,10 @@
+name: grafana
+services:
+    grafana-enterprise:
+        ports:
+            - 3000:3000
+        container_name: grafana
+        user: $(id -u)
+        volumes:
+            - /opt/docker/grafana/data:/var/lib/grafana
+        image: grafana/grafana-enterprise
