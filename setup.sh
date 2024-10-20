@@ -42,4 +42,10 @@ echo ""
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 echo ""
 
-echo "Setting up docker containers."
+echo "Creating directory in /opt"
+mkdir /opt/docker
+echo ""
+
+echo "Setting up docker volumes."
+docker volume create portainer_data
+echo ""
