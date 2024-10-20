@@ -71,5 +71,8 @@ echo ""
 echo [[inputs.net]]    [[inputs.netstat]]    [[inputs.file]]    files = ["/sys/class/thermal/thermal_zone0/temp"]    name_override = "cpu_temperature"    data_format = "value"    data_type = "integer"    [[inputs.exec]]    commands = ["/opt/vc/bin/vcgencmd measure_temp"]    name_override = "gpu_temperature"    data_format = "grok"    grok_patterns = ["%{NUMBER:value:float}"]  >> /etc/telegraf/telegraf.conf
 echo ""
 
-echo "Starting container."
+echo "Starting containers."
+echo ""
+
+echo "Setting up NetBox."
 echo ""
