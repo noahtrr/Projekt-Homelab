@@ -49,3 +49,27 @@ echo ""
 echo "Setting up docker volumes."
 docker volume create portainer_data
 echo ""
+
+echo "Installing telegraf for monitoring purposes."
+curl --silent --location -O \
+https://repos.influxdata.com/influxdata-archive.key \
+&& echo "943666881a1b8d9b849b74caebf02d3465d6beb716510d86a39f6c8e8dac7515  influxdata-archive.key" \
+| sha256sum -c - && cat influxdata-archive.key \
+| gpg --dearmor \
+| sudo tee /etc/apt/trusted.gpg.d/influxdata-archive.gpg > /dev/null \
+&& echo 'deb [signed-by=/etc/apt/trusted.gpg.d/influxdata-archive.gpg] https://repos.influxdata.com/debian stable main' \
+| sudo tee /etc/apt/sources.list.d/influxdata.list
+sudo apt-get update && sudo apt-get install telegraf
+echo ""
+
+echo "Add telegraf to video user group."
+sudo usermod -G video telegraf
+echo ""
+
+echo "Add raspberry pi specific config to telegraf."
+echo ""
+echo [[inputs.net]]    [[inputs.netstat]]    [[inputs.file]]    files = ["/sys/class/thermal/thermal_zone0/temp"]    name_override = "cpu_temperature"    data_format = "value"    data_type = "integer"    [[inputs.exec]]    commands = ["/opt/vc/bin/vcgencmd measure_temp"]    name_override = "gpu_temperature"    data_format = "grok"    grok_patterns = ["%{NUMBER:value:float}"]  >> /etc/telegraf/telegraf.conf
+echo ""
+
+echo "Starting container."
+echo ""
